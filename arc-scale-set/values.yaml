@@ -1,0 +1,25 @@
+githubConfigUrl: "https://github.com/tro-org/llama.cpp"
+githubConfigSecret: github-secret
+
+scaleSetLabels: ["self-hosted", "X64"]
+
+minRunners: 2
+maxRunners: 2
+
+template:
+  spec:
+    containers:
+      - name: runner
+        image: localhost:5000/actions-runner
+        imagePullPolicy: Never
+        command: ["/home/runner/run.sh"]
+        env:
+          - name: DEBIAN_FRONTEND
+            value: noninteractive
+        resources:
+          requests:
+            cpu: "4"
+            memory: "10Gi"
+          limits:
+            cpu: "4"
+            memory: "10Gi"
