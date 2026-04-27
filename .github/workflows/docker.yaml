@@ -12,6 +12,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
+  BRANCH_NAME: ${{ github.ref_name }}
   IMAGE_NAME: ${{ github.repository_owner }}/actions-runner
 
 jobs:
