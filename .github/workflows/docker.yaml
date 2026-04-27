@@ -13,7 +13,7 @@ on:
 env:
   REGISTRY: ghcr.io
   BRANCH_NAME: ${{ github.ref_name }}
-  IMAGE_NAME: ${{ github.repository_owner }}/${{ github.ref_name }}
+  IMAGE_NAME: ${{ github.repository_owner }}/taronaeo-ci-runner
 
 jobs:
   create_tag:
@@ -45,6 +45,7 @@ jobs:
           git push origin ${{ steps.srctag.outputs.name }} || exit 0
 
   build:
+    needs: create_tag
     strategy:
       fail-fast: false
       matrix:
@@ -173,5 +174,5 @@ jobs:
 
       - name: Inspect merged manifest
         run: |
-          docker buildx imagetools inspect ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          docker buildx imagetools inspect ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.tag.outputs.name }}
 
