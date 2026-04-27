@@ -13,7 +13,7 @@ on:
 env:
   REGISTRY: ghcr.io
   BRANCH_NAME: ${{ github.ref_name }}
-  IMAGE_NAME: ${{ github.repository_owner }}/actions-runner
+  IMAGE_NAME: ${{ github.repository_owner }}/${{ github.ref_name }}
 
 jobs:
   create_tag:
