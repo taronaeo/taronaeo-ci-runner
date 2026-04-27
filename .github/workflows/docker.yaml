@@ -120,7 +120,7 @@ jobs:
 
   merge:
     name: Merge Multi-Arch Manifest
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-24.04
     needs: build
     permissions:
       contents: read
